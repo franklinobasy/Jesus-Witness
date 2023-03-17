@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+
+{% block title %}
+  Post Title
+{% endblock %}
+
+{% block content %}
+<article class="media content-section">
+  <img class="rounded-circle article-img" src="">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">John Doe</a>
+      <small class="text-muted">11-02-2023</small>
+      {% if object.author == user %}
+        <div>
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="">Update</a>
+          <a class="btn btn-danger btn-sm mt-1 mb-1" href="">Delete</a>
+        </div>
+      {% endif %}
+    </div>
+    <h2 class="article-title">Post Title</h2>
+    <p class="article-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, quod neque sunt possimus sint sapiente laudantium quidem temporibus animi nisi nulla quis fuga maxime ab dolores tempore! Dolor ullam blanditiis cum omnis quas dignissimos fuga autem possimus exercitationem cupiditate! Aut aliquam eligendi, hic non enim, similique dolores error quo magni voluptatibus reiciendis facilis vitae? Eius labore quidem cumque quisquam officia dolores, minima ad ipsum officiis! Nesciunt libero porro totam, ex debitis veritatis quaerat dolor illo? Aliquid quos tempore iste architecto. Laborum tenetur facilis ipsum perferendis laudantium enim incidunt, provident iusto temporibus ipsam quod, rerum similique cumque nulla. Error praesentium voluptate non. Possimus in similique quae blanditiis vel tempora autem minima, recusandae laborum molestias labore nesciunt eligendi quis assumenda itaque dolorem mollitia doloremque? Possimus molestias doloremque, error, odio, atque officiis corrupti repellat vel a explicabo consequuntur enim. Aspernatur neque ad ratione voluptatibus iusto, facilis perspiciatis vitae commodi, eum repellat repellendus ipsa aperiam assumenda quia provident placeat. Cupiditate reiciendis aliquid, dolore quisquam quibusdam, quod odio vel iure eaque neque alias beatae dolor? Quidem doloremque eligendi laudantium aliquid, consectetur dolore modi minima aspernatur quibusdam voluptatem veniam voluptas voluptatibus nulla quod sequi ipsum qui obcaecati iste libero, eum provident excepturi. Provident, officia beatae voluptatibus aut vel deserunt reprehenderit! Nostrum nulla doloribus doloremque earum commodi beatae, dolorum dolores dolorem numquam vero facilis laudantium nobis ex odit, saepe sunt culpa provident ducimus. Blanditiis assumenda ullam similique ut deserunt aut ad praesentium saepe ab dicta animi atque repudiandae nobis distinctio minima natus deleniti autem, laborum officia dolor ea. Molestias asperiores, in nam deleniti doloremque recusandae ab quod reiciendis quasi non molestiae, voluptas porro dignissimos expedita? Unde, eveniet, amet excepturi aperiam hic mollitia cumque esse reprehenderit debitis nisi ab id vel sapiente velit nam aspernatur. Consequatur illo totam cupiditate maiores veniam ut fugiat sint eaque distinctio facere facilis eum excepturi cum cumque expedita explicabo, voluptates labore numquam architecto sed. Omnis necessitatibus vitae itaque laborum provident quod minima dolore ducimus exercitationem dignissimos tenetur culpa placeat, velit nihil, soluta, impedit quo dolores. Quaerat magnam pariatur sed totam itaque modi doloremque quam. Officiis vitae ab eos tempore incidunt nemo omnis corporis dicta blanditiis, aspernatur atque itaque nobis! Voluptatum porro fugit ipsum nobis provident ad maxime mollitia dicta, ratione temporibus unde, aliquam atque nemo hic nostrum delectus, explicabo laudantium at tempora architecto. Molestiae nostrum nihil, reprehenderit in asperiores illo? Illum repudiandae recusandae molestiae, soluta unde minus ea ut. Esse ex, enim itaque praesentium fugiat saepe ratione dolorem animi dignissimos repellat aut aliquam voluptatem, culpa aliquid tenetur molestias commodi quidem. Recusandae quo distinctio temporibus enim voluptate facere. Quidem ullam earum, reiciendis eum, magnam cumque accusantium doloremque accusamus, vero distinctio beatae soluta excepturi provident. Iusto, tempore, doloremque ut at perferendis accusamus nesciunt accusantium ab labore fuga possimus, atque reiciendis exercitationem explicabo aut vero quos enim fugiat cupiditate eos numquam et odio quibusdam. Cupiditate et earum, possimus ullam voluptatibus, magnam vitae dolorum pariatur libero sint doloremque maxime nostrum consequatur in commodi cumque accusamus. Recusandae ducimus placeat voluptates quam deleniti fuga doloribus a, dignissimos reiciendis sequi.</p>
+  </div>
+</article>
+{% endblock %}
