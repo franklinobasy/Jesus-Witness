@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title%}
+  Become a Witness
+{% endblock %}
+
+{% block content%}
+  <div class="form-container" style="width: 30vw; margin-left: 32vw;">
+    <form method="post">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 fs-1 fw-bold text-center">
+                Become an Editor
+            </legend>
+            {{ form | crispy }}
+        </fieldset>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+      
+    </form>
+    <div class="border-top pt-3">
+      <small class="text-muted">Aready Have An Account ?
+          <a class="ml-2" href="{% url 'witness:login' %}">Sign In</a>
+      </small>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title%}
+  Welcome back
+{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-6">
+        <div class="form-container mt-5 pt-5"  style="width: 30vw; margin-left: 5vw;">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4 text-center fs-1 fw-bold">
+                        Sign In
+                    </legend>
+                    {{ form | crispy }}
+                </fieldset>
+                <div>
+                    <button class="btn btn-outline-info" type="submit">Sign In</button>
+                </div>
+            </form>
+            <div class="pt-3">
+                <small class="text-muted">New Here?
+                    <a class="ml-2" href="{% url 'witness:register' %}">Sign Up Now</a>
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div id="carouselExampleInterval" class="carousel carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'witness/img/1.jpg' %}" class="d-block w-100" style="height: 75vh;" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'witness/img/2.jpg' %}" class="d-block w-100" style="height: 75vh;" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'witness/img/3.jpg' %}" class="d-block w-100" style="height: 75vh;" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'witness/img/4.jpg' %}" class="d-block w-100" style="height: 75vh;" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'witness/img/5.jpg' %}" class="d-block w-100" style="height: 75vh;" alt="">
+              </div>
+            </div>
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button> -->
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

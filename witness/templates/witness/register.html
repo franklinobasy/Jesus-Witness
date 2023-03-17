@@ -1,0 +1,51 @@
+{% extends 'home/base.html' %}
+
+{% block title%}
+  Become a Witness
+{% endblock %}
+
+{% block content %}
+<header class="mt-5">
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Become A Witness</h1>
+    <p class="fs-5 text-muted">Get access to Spirit-filled Contents to Equip your spirit</p>
+  </div>
+</header>
+
+<main class="container">
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center justify-content-center">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Join the Audience</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">Viewer</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Get access to daily articles</li>
+            <li>Download Christian Literatures</li>
+            <li>Be Inspired!</li>
+          </ul>
+          <a href="{% url 'witness:register_viewer' %}" class="w-100 btn btn-lg btn-outline-primary">Sign up</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Feed the Audience</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">Editor</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Post Spirit-filled Articles</li>
+            <li>Get access to daily articles</li>
+            <li>Download Christian Literatures</li>
+          </ul>
+          <a href="{% url 'witness:register_editor' %}" class="w-100 btn btn-lg btn-primary">Get started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
