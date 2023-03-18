@@ -31,9 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'witness.apps.WitnessConfig',
     "home",
     "blog",
-    "witness",
     'crispy_forms',
     'crispy_bootstrap5',
     "django.contrib.admin",

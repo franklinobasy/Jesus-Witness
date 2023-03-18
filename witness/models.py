@@ -160,11 +160,11 @@ class Viewer(User):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        owners_group, created = Group.objects.get_or_create(name="Viewers")
+        viewers_group, created = Group.objects.get_or_create(name="Viewers")
 
         # add group permissions here
 
-        self.groups.add(owners_group)
+        self.groups.add(viewers_group)
 
 
 class ViewerProfile(models.Model):

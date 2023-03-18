@@ -18,7 +18,6 @@ from .models import (
 def create_viewer_profile(sender, instance, created, **kwargs):
     '''creates viewer profile when viewer user is saved'''
     if created and instance.role == 'VIEWER':
-        with transaction.atomic():
             ViewerProfile.objects.create(user=instance)
 
 
@@ -34,7 +33,6 @@ def save_viewer_profile(sender, instance, **kwargs):
 def create_editor_profile(sender, instance, created, **kwargs):
     '''creates editor profile when viewer user is saved'''
     if created and instance.role == 'EDITOR':
-        with transaction.atomic():
             EditorProfile.objects.create(user=instance)
 
 
