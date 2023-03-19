@@ -4,9 +4,23 @@ from django.contrib.auth.models import User
 
 from witness.models import Editor
 
+from blog.categories import categories as c
+
+
+def cover_image_path(instance, filename):
+    return 'covers/{0}/{1}'.format(instance.id, filename)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20)
+
 
 class Post(models.Model):
+
+    CATEGORIES = c
+
     title = models.CharField(max_length=100)
+    categories = models.ManyToManyField(Category, choices=c)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     date_modified = models.DateTimeField(default=timezone.now)
@@ -14,6 +28,10 @@ class Post(models.Model):
             Editor,
             related_name="posts",
             on_delete=models.CASCADE
+        )
+    cover = models.ImageField(
+            upload_to=cover_image_path,
+            default='covers/default.jpg'
         )
 
     def __str__(self):
@@ -28,3 +46,4 @@ class Comment(models.Model):
 
     def __str__(self) -> str:
         return self.author.first_name
+    

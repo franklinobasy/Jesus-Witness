@@ -10,7 +10,7 @@ from django.contrib import admin
 
 def profile_image_path(instance, filename):
     # uploads profile images to profiles/<username>/<filename>
-    return 'profiles/{0}/{1}'.format(instance.user.username, filename)
+    return 'profiles/{0}/{1}'.format(instance.username, filename)
 
 class User(AbstractUser):
     '''defines our custom AUTH_USER_MODEL
