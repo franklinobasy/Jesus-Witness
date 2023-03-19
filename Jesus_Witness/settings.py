@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,8 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'witness.apps.WitnessConfig',
-    "home",
-    "blog",
+    "home.apps.HomeConfig",
+    "blog.apps.BlogConfig",
     'crispy_forms',
     'crispy_bootstrap5',
     "django.contrib.admin",
@@ -131,6 +132,8 @@ AUTH_USER_MODEL = "witness.User"
 
 LOGIN_REDIRECT_URL = "home"
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
 
 # This redirects users to our login route when they
 # try to access the profile page without logging in first

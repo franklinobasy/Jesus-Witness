@@ -1,4 +1,6 @@
 {% extends 'home/base.html' %}
+{% load filters %}
+{% load static %}
 
 {% block title %}
   Jesus's Witness Blog
@@ -10,28 +12,64 @@
 
     <div class="col container">
       <div class="row mb-2">
-        <div class="col justify-content-center px-5">
+        <div class="col-8 justify-content-center px-5">
           {% for post in posts %}
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="height: 30vh;">
                 <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-primary"></strong>
-                  <h3 class="mb-0">Featured post</h3>
-                  <div class="mb-1 text-muted">Nov 12</div>
-                  <p class="card-text mb-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit hic voluptate voluptatum magni consequatur recusandae, odio explicabo temporibus culpa. Nostrum et error deserunt voluptatibus exercitationem. Culpa nam cupiditate hic blanditiis reprehenderit dicta molestias! Maxime nesciunt sapiente sit accusamus optio porro eligendi, quod suscipit dolor assumenda perferendis cum autem reiciendis dignissimos.</p>
+                  <strong class="d-inline-block mb-2 text-primary">
+                    {% for tag in post.categories.all %}
+                      {{ tag.name }}-
+                    {% endfor %}
+                  </strong>
+                  <h3 class="mb-0">{{ post.title }}</h3>
+                  <div class="mb-1 text-muted" >{{ post.date_modified }}</div>
+                  <p class="card-text mb-5" >{{ post.content|shorten_content }}...</p>
                   <a href="{% url 'blog:post' %}" class="stretched-link">Continue reading</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                  <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  <img class="bd-placeholder-img" width="200" height="250" src="{{ post.cover.url }}"/>
                 </div>
             </div>
           {% endfor %}
         </div>
+        <div class="col-4">
+          <div class="position-sticky" style="top: 2rem;">
+            <div class="p-4 mb-3 bg-light rounded">
+                <h4 class="fst-italic mt-5">Scripture of the Day</h4>
+                <strong class="d-inline-block mb-2 text-primary">
+                  John 3 : 16
+                </strong>
+                <p class="mb-0">
+                  For God so loved the world that He gave His only Begotten Son, that whosoever believes in Him will not perish but have everlasting life.
+                </p>
+            </div>
+        </div>
+        </div>
       </div>
       <div class="row g-5">
-        <nav class="blog-pagination" aria-label="Pagination">
-          <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-          <a class="btn btn-outline-primary" href="#">Older</a>
-        </nav>
+        {% if is_paginated %}
+          <nav class="blog-pagination" aria-label="Pagination">
+          {% if posts.has_previous %}
+              <a class="btn btn-outline-primary" href="?page=1" tabindex="-1" aria-disabled="true">Latest</a>
+          {% endif %}
+          {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}" class="btn btn-outline-primary">Newer</a>
+          {% endif %}
+          {% for num in posts.paginator.page_range %}
+            {% if posts.number == num %}
+                <a href="?page={{ num }}" class="btn btn-info">{{ num }}</a>
+            {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+                <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+          {% if posts.has_next %}
+            <a class="btn btn-outline-primary" href="?page={{ posts.next_page_number }}">Older</a>
+          {% endif %}
+          {% if posts.has_next %}
+            <a class="btn btn-outline-primary" href="?page={{ posts.paginator.num_pages }} ">Oldest</a>
+          {% endif %}
+          </nav>
+        {% endif %}
     </div>
     </div>
   </div>
