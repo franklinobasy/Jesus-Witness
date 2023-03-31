@@ -22,8 +22,8 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     categories = models.ManyToManyField(Category, choices=c)
     content = models.TextField()
-    date_posted = models.DateTimeField(default=timezone.now)
-    date_modified = models.DateTimeField(default=timezone.now)
+    date_posted = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(
             Editor,
             related_name="posts",
@@ -40,7 +40,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    date_posted = models.DateTimeField(default=timezone.now)
+    date_posted = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Editor, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
 
