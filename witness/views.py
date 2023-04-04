@@ -3,6 +3,7 @@ from django.contrib import messages
 
 from witness.forms import EditorCreationForm, ViewerCreationForm
 
+
 def register(request):
     return render(request, 'witness/register.html')
 

@@ -8,13 +8,14 @@ from blog.models import Post
 from blog.generate_data import generate
 # generate.run()
 
+
 class BlogView(ListView):
     template_name = "blog/posts.html"
     model = Post
     paginate_by = 10
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        context_data =  super().get_context_data(**kwargs)
+        context_data = super().get_context_data(**kwargs)
         queryset = Post.objects.order_by('date_posted').all()
         paginator = Paginator(queryset, self.paginate_by)
         page = self.request.GET.get('page')
@@ -26,7 +27,6 @@ class BlogView(ListView):
             items = paginator.page(paginator.num_pages)
         context_data['posts'] = items
         return context_data
-
 
 
 class PostView(TemplateView):

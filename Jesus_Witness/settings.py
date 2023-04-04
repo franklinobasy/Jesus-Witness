@@ -138,6 +138,7 @@ MEDIA_URL = 'media/'
 # This redirects users to our login route when they
 # try to access the profile page without logging in first
 LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "home"
 
 # crispy forms config
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

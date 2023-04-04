@@ -12,6 +12,7 @@ def profile_image_path(instance, filename):
     # uploads profile images to profiles/<username>/<filename>
     return 'profiles/{0}/{1}'.format(instance.username, filename)
 
+
 class User(AbstractUser):
     '''defines our custom AUTH_USER_MODEL
     (see settings.py; line 137)
@@ -30,7 +31,6 @@ class User(AbstractUser):
         NONE = 'NONE', 'None',
         MALE = "MALE", "Male",
         FEMALE = "FEMALE", "Female"
-        
 
     # Role.choices here constrains user to only select one of these
     # listed choices.
@@ -195,7 +195,8 @@ class EditorAdmin(admin.ModelAdmin):
     '''
     list_display = ('username', 'email', 'first_name',
                     'last_name')
-    
+
+
 class ViewerAdmin(admin.ModelAdmin):
     '''adds viewer details to admin panel
     Args:
